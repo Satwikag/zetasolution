@@ -11,7 +11,17 @@ public class Contact {
     private List<Address>     addresses;
 
     public Contact(String name, String organisation) throws Exception {
-        // TODO
+    	if(name == null || name.isEmpty() || name.length() >255 || !PhoneNumber.onlyLettersSpaces(name)) {
+    		throw new IllegalArgumentException("name has not valid content.");
+    	}
+    	if(organisation == null ) {
+    		organisation = "";
+    	}
+    	if(organisation.length() > 255) {
+    		throw new IllegalArgumentException("organisation length is exceeding the 255 characters");
+    	}
+        this.name = name;
+        this.organisation = organisation;
     }
 
     public String getName() {
